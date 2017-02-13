@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "super mexicano"
+        id        = "dogslife"
         version   = "1.0.0">
 
-    <name>Dosgslife</name>
+    <name>Dogslife</name>
 
     <description>
-        Dosgslife
+        Dogslife
     </description>
 
-    <author href="http://digisign.mx" email="mruiz@digisign.mx">
-        Digisign
+    <author href="http://marlonruo.com" email="marlonruo@gmail.com">
+        Marlon Ruiz
     </author>
 
     <!--
