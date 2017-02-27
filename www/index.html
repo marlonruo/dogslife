@@ -83,9 +83,13 @@
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data) {
-					$('#aler2').html(data)
-					//mact=0
-					//window.location.href = '#perfil'
+					if(data=="no pasa"){
+						$('#aler2').html('* Usuario o contraseña incorrectos')
+					}else{
+						mact=0
+						window.location.href = '#perfil'
+						alert(localStorage.getItem('nombre'))
+					}
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
             }
         })
@@ -571,11 +575,8 @@ function initMap() {
         
         
          <script>
-		 
-		window.location.href = '#portada'
-		 
 		var pagina = window.location.hash
-		var pagina2 = window.location.hash
+		alert(pagina)
 
 		
 		function cambio(){
