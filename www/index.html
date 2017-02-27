@@ -53,35 +53,37 @@
           		<div class="centrar_h texto16" style="color:#0070c0; top:21%; margin-left:4%; font-weight:bold">life</div>
           		
                 <form>
-                <input id="usuario" name="usuario" type="text" class="redondo texto1" style="position:absolute; width:calc(90% - 80px); left:5%; top:27%; height:8%; background-color:#e7e7e7; border:none; padding-left:80px; color:#9E9E9E; font-size:13px; background-image:url(img/user.png); background-repeat:no-repeat; background-size:auto 16px; background-position:32px 50%" value="USUARIO" onFocus="borrar1a()" onBlur="checar1a()" tabindex="10">
+                <input id="usuario" name="usuario" type="text" class="redondo texto1" style="position:absolute; width:calc(90% - 80px); left:5%; top:27%; height:8%; background-color:#e7e7e7; border:none; padding-left:80px; color:#9E9E9E; font-size:13px; background-image:url(img/user.png); background-repeat:no-repeat; background-size:auto 50%; background-position:32px 50%" value="USUARIO" onFocus="borrar1a()" onBlur="checar1a()" tabindex="10">
                 
-                <input id="pass" name="pass" type="text" class="redondo texto1" style="position:absolute; width:calc(90% - 80px); left:5%; top:38%; height:8%; background-color:#e7e7e7; border:none; padding-left:80px; color:#9E9E9E; font-size:13px; background-image:url(img/PASS.png); background-repeat:no-repeat; background-size:auto 16px; background-position:32px 50%" value="CONTRASEÑA" onFocus="borrar2a()" onBlur="checar2a()" tabindex="11">
+                <input id="pass" name="pass" type="text" class="redondo texto1" style="position:absolute; width:calc(90% - 80px); left:5%; top:38%; height:8%; background-color:#e7e7e7; border:none; padding-left:80px; color:#9E9E9E; font-size:13px; background-image:url(img/PASS.png); background-repeat:no-repeat; background-size:auto 50%; background-position:32px 50%" value="CONTRASEÑA" onFocus="borrar2a()" onBlur="checar2a()" tabindex="11">
                 
                <input type="submit" id="entrar" class="redondo botones" style="position:absolute; width:90%; left:5%; top:49%; height:8%; background:#0070c0; color:#FFFFFF; border:none" value="ENTRAR">
                 </form>
+                
+                <div id="aler2" class="info" style="position:absolute; top:60%; width:100%; text-align:center; font-size:11px">Olvidaste tu contraseña?</div>
                 
                 <script>
                 
 	$('#forma_registro').submit(function() {
 		if(document.getElementById("usuario").value == 'USUARIO'){
-			$('#t_ple').fadeIn()
-			$('#t_ple').html('* Name required')
+			$('#aler2').html('* Usuario requerido')
+			setTimeout("$('#aler2').html('')", 1500)
       		return false;
 		}
 
 		if(document.getElementById("pass").value == 'CONTRASEÑA'){
-			$('#t_ple').fadeIn()
-			$('#t_ple').html('* Last name required')
+			$('#aler2').html('* Contraseña requerida')
+			setTimeout("$('#aler2').html('')", 1500)
       		return false;
 		}
 
-
+		$('#aler2').html('* Espera un momento')
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data) {
-
+					$('#aler2').html(data)
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
             }
         })
@@ -117,7 +119,7 @@
 		}
                 </script>
                 
-                <div class="info" style="position:absolute; top:60%; width:100%; text-align:center; font-size:11px">Olvidaste tu contraseña?</div>
+                
                 
                 
                 <div style="width:70%; left:15%; position:absolute; height:2px; background-color:#636363; top:66%"></div>
@@ -153,7 +155,7 @@
                     <input type="submit" class="redondo botones" style="position:absolute; width:90%; left:5%; top:63%; height:8%; background:#2f5596; color:#FFFFFF; border:none" value="REGISTRATE">
                 </form>
                 
-                <div id="aler1" class="info" style="position:absolute; top:72.5%; width:100%; text-align:center; font-size:13px; cursor:pointer">* Error</b></div>
+                <div id="aler1" class="info" style="position:absolute; top:72.5%; width:100%; text-align:center; font-size:13px; cursor:pointer"></div>
                 
                 <script>
                 
@@ -173,14 +175,15 @@
 			setTimeout("$('#aler1').html('')", 1500)
       		return false;
 		}
-
+		$('#aler1').html('* Correcto, espera un momento')
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data) {
-					alert("pp")
-					$('#aler1').html(data)
+					$('#aler1').html('')
+					mact=0
+					window.location.href = '#perfil'
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
             }
         })
@@ -268,10 +271,10 @@
                 	<div id="ir_mascota" style="position:absolute; width:100%; height:30%; background-color:rgba(0,0,0,.5); bottom:0px; cursor:pointer">
                     	<img src="img/mascota.png" class="centrar_v" style="right:5%; height:55%;"/>
                         <div class="centrar_v" style="right:20%; text-align:right; font-size:13px; color:#FFFFFF">
-                        	<div style="font-size:15px" class="texto16"><b>Perfil de</b></div>
-                            <div class="texto12">mi mascota</div>
+                        	<div style="font-size:15px" class="texto18"><b>Perfil de</b></div>
+                            <div class="texto15">mi mascota</div>
                         </div>
-                        <div class="centrar_v" style="left:8%; text-align:left; font-size:13px; color:#FFFFFF"><b style="font-size:18px" class="texto16">12</b><br><span class="texto12">amigos</span></div>
+                        <div class="centrar_v" style="left:8%; text-align:left; font-size:13px; color:#FFFFFF"><b style="font-size:18px" class="texto18">12</b><br><span class="texto14">amigos</span></div>
                     </div>
                 
                 </div>
@@ -283,19 +286,19 @@
                 
                  <div style="position:absolute; top:60%; background-color:rgba(240,240,240,1.00); width:100%; height:25%">
                 	<img src="img/telefono.png" class="centrar_v" style="left:8%; height:11%; margin-top:-10%"/>
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:-10%">(044) 55 4912 1015</div>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:-10%">(044) 55 4912 1015</div>
                     
                     <img src="img/mail.png" class="centrar_v" style="left:8%; height:11%;"/>
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold;">ximena_sm@gmail.com</div>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;">ximena_sm@gmail.com</div>
                     
                     <img src="img/direccion.png" class="centrar_v" style="left:8%; height:11%; margin-top:10%"/>
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:10%">calle chabacano # 7 Col Higuera<br>Atizapan de Zaragoza</div>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:10%">calle chabacano # 7 Col Higuera<br>Atizapan de Zaragoza</div>
                 </div>
                 
                 <div style="position:absolute; top:87%; background-color:rgba(240,240,240,1.00); width:100%; height:13%">
                 	<img src="img/calendar.png" class="centrar_v" style="left:8%; height:30%;"/>
                     <img src="img/scroll.png" class="centrar_v" style="right:8%; height:50%;"/>
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>21 - ene - 2017</b><br>No tienes registro de paseos</div> 
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>21 - ene - 2017</b><br>No tienes registro de paseos</div> 
                 </div>
           		
             </div>
@@ -311,8 +314,8 @@
                 	<div style="position:absolute; width:100%; height:30%; background-color:rgba(0,0,0,.5); bottom:0px">
                     	<img src="img/foot.png" class="centrar_v" style="right:5%; height:55%;"/>
                         <div class="centrar_v" style="right:20%; text-align:right; font-size:13px; color:#FFFFFF">
-                        	<div style="font-size:15px" class="texto16"><b>Perfil de</b></div>
-                            <div class="texto12">mi humano</div>
+                        	<div style="font-size:15px" class="texto18"><b>Perfil de</b></div>
+                            <div class="texto15">mi humano</div>
                         </div>
                         
                     </div>
@@ -326,18 +329,18 @@
                 
                  <div style="position:absolute; top:60%; background-color:rgba(240,240,240,1.00); width:100%; height:25%">
                 	<img src="img/info_pe.png" class="centrar_v" style="left:8%; height:11%; margin-top:-7%"/>
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:-7%"><b>Raza:</b> Labrador Golden</div>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:-7%"><b>Raza:</b> Labrador Golden</div>
 
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>Color:</b> Miel</div>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>Color:</b> Miel</div>
                     
                     
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:7%"><b>Tipo de pelo:</b> Largo</div>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:7%"><b>Tipo de pelo:</b> Largo</div>
                 </div>
                 
                 <div style="position:absolute; top:87%; background-color:rgba(240,240,240,1.00); width:100%; height:13%">
                 	<img src="img/syringe.png" class="centrar_v" style="left:8%; height:30%;"/>
                     <img src="img/scroll.png" class="centrar_v" style="right:8%; height:50%;"/>
-                    <div class="centrar_v texto11" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>21 - ene - 2017</b><br>Antirrabica</div> 
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>21 - ene - 2017</b><br>Antirrabica</div> 
                 </div>
           		
             </div>
@@ -824,6 +827,8 @@ $('#atras').click(function(){
 				$('.texto14').css('font-size', height/50+'px')
 				$('.texto15').css('font-size', height/45+'px')
 				$('.texto16').css('font-size', height/40+'px')
+				$('.texto17').css('font-size', height/35+'px')
+				$('.texto18').css('font-size', height/30+'px')
 				
 				$('.botones').css('font-size', height/40+'px')
 				$('.info').css('font-size', height/48+'px')
