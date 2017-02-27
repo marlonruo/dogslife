@@ -88,7 +88,15 @@
 					}else{
 						mact=0
 						window.location.href = '#perfil'
-						alert(data)
+						var datos = data
+						
+						var campo = datos.split("-*");
+						alert(campo[0])
+						alert(campo[1])
+						alert(campo[2])
+						alert(campo[3])
+						alert(campo[4])
+						alert(campo[5])
 					}
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
             }
