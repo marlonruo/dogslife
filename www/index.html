@@ -88,14 +88,31 @@
 					}else{
 						mact=0
 						window.location.href = '#perfil'
-						var datos = data
-						var campo = datos.split("-*");
-						var id=campo[0];
-						$('#p_email').html(campo[1])
-						$('#p_nombre').html(campo[2])
-						$('#p_telefono').html(campo[3])
-						$('#p_direccion').html(campo[4])
-						var foto = campo[5]
+						
+						$("#perfil").load("http://dogs-life.com.mx/dogs/perfil.php", function() {
+							 ir_perfil()
+							 inicio()
+						});
+						
+						function ir_perfil(){ 
+							var datos = data
+							var campo = datos.split("-*");
+							var id=campo[0];
+							$('#p_email').html(campo[1]);
+							$('#p_nombre').html(campo[2]);
+							if(campo[3]==""){$('#p_telefono').html('--');}else{$('#p_telefono').html(campo[3])};
+							if(campo[4]==""){$('#p_direccion').html('--');}else{$('#p_direccion').html(campo[4])};
+							var foto = campo[5];
+							if(foto==""){
+								$('#p_foto').css('background', 'url(img/perfil.jpg) no-repeat')
+								$('#p_foto').css('background-position', 'center')
+								$('#p_foto').css('background-size','cover')
+							}else{
+								$('#p_foto').css('background', 'url(http://dogs-life.com.mx/dogs/fotos/'+foto+' no-repeat')
+								$('#p_foto').css('background-position', 'center')
+								$('#p_foto').css('background-size','cover')
+							}
+						}
 					}
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
             }
@@ -277,15 +294,21 @@
 
           
           
-          <div id="perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
-       	        
+            <div id="perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
                 
-                <div id="p_foto" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/perfil.jpg) no-repeat; background-position:center; background-size:cover">
+            </div>
+            
+            
+            
+            
+            
+            <div id="editar_perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
+                <div id="p_foto" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/sin_foto.png) no-repeat; background-position:center; background-size:cover">
                 	<div id="ir_mascota" style="position:absolute; width:100%; height:30%; background-color:rgba(0,0,0,.5); bottom:0px; cursor:pointer">
                     	<img src="img/mascota.png" class="centrar_v" style="right:5%; height:55%;"/>
                         <div class="centrar_v" style="right:20%; text-align:right; font-size:13px; color:#FFFFFF">
-                        	<div style="font-size:15px" class="texto18"><b>Perfil de</b></div>
-                            <div class="texto15">mi mascota</div>
+                        	<div style="font-size:15px" class="texto18"><b>Subir</b></div>
+                            <div class="texto15">foto</div>
                         </div>
                         <div class="centrar_v" style="left:8%; text-align:left; font-size:13px; color:#FFFFFF"><b style="font-size:18px" class="texto18">12</b><br><span class="texto14">amigos</span></div>
                     </div>
@@ -314,7 +337,6 @@
                     <img src="img/scroll.png" class="centrar_v" style="right:8%; height:50%;"/>
                     <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>21 - ene - 2017</b><br>No tienes registro de paseos</div> 
                 </div>
-          		
             </div>
             
             
@@ -324,7 +346,7 @@
             <div id="mascota" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
        	    	
                 
-                <div id="ir_perfil" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/perro.jpg) no-repeat; background-position:center; background-size:cover; cursor:pointer">
+                <div id="ir_perfil" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/sin_foto_mas.png) no-repeat; background-position:center; background-size:cover; cursor:pointer">
                 	<div style="position:absolute; width:100%; height:30%; background-color:rgba(0,0,0,.5); bottom:0px">
                     	<img src="img/foot.png" class="centrar_v" style="right:5%; height:55%;"/>
                         <div class="centrar_v" style="right:20%; text-align:right; font-size:13px; color:#FFFFFF">
@@ -455,8 +477,6 @@ function initMap() {
             
             
              <div id="alimentos" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
-       	    	
-                
                 <div style="position:absolute; width:100%; height:8%; background:#EBEBEB; top:10%">
                 	<img src="img/buscar.png" class="centrar_v" style="left:8%; height:40%;"/>
                     <img src="img/tienda.png" class="centrar_v" style="right:22%; height:40%"/>
@@ -535,8 +555,8 @@ function initMap() {
              	</div>
                 
                 <div id="m2" style="position:absolute; width:100%; height:16.6%; background-color:#003764; top:16.6%">
-                	<div class="circulo centrar_v" style="left:20%">
-           	     		<img src="img/paseo.png" class="centrar" style="width:60%"/> 
+                	<div class="rombo" style="left:18%">
+           	     		<img src="img/pas.png" class="enderezar" style="width:60%"/> 
                     </div>
                		<div class="centrar_v texto16" style="left:40%; font-size:16px; color:#FFFFFF"><b>Paseo</b></div>
              	</div>

@@ -63,6 +63,30 @@ body {
 }
 
 
+.rombo {
+	position:absolute;
+     width: 9%; 
+     height: 0; 
+	 padding-bottom: 9%;
+	 top: 50%;
+     border:3px solid rgba(255,255,255,.4); 
+     -webkit-transform: rotate(45deg) translate(0%, -65%);
+     -moz-transform: rotate(45deg) translate(0%, -65%);
+     -ms-transform: rotate(45deg) translate(0%, -65%);
+     -o-transform: rotate(45deg) translate(0%, -65%);
+     transform: rotate(45deg) translate(0%, -65%);
+}
+
+.enderezar{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: rotate(-45deg) translate(0%, -65%);
+     -moz-transform: rotate(-45deg) translate(0%, -65%);
+     -ms-transform: rotate(-45deg) translate(0%, -65%);
+     -o-transform: rotate(-45deg) translate(0%, -65%);
+     transform: rotate(-45deg) translate(0%, -65%);
+}
 
 
 
