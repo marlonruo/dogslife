@@ -630,7 +630,7 @@ function initMap() {
 					
 					$('#perfil').animate({marginLeft:'0%'}, 1000)
 					$('#titulo').html('Perfil')
-					if(mact==1){
+					if(mact==1 || mact==12){
 						$('#perfil').stop().animate({marginLeft:'0%'}, 0)
 					}
 					pos=3
@@ -712,6 +712,15 @@ function initMap() {
 					$('#mascota').animate({marginLeft:'0%'}, 1000)
 					$('#titulo').html('Mi mascota')
 					pos=11
+			}else if(pagina=='#editar_perfil'){
+					$('#editar_perfil').show()
+					$('#perfil').css('z-index', '3')
+					$('#editar_perfil').css('z-index', '10')
+					$('#editar_perfil').css('margin-left', '100%')
+							
+					$('#editar_perfil').animate({marginLeft:'0%'}, 1000)
+					$('#titulo').html('Editar Perfil')
+					pos=12
 			}	
 		} 
 		   
