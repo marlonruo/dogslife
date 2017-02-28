@@ -104,7 +104,7 @@
 							if(campo[4]==""){$('#p_direccion').html('--');}else{$('#p_direccion').html(campo[4])};
 							var foto = campo[5];
 							if(foto==""){
-								$('#p_foto').css('background', 'url(img/perfil.jpg) no-repeat')
+								$('#p_foto').css('background', 'url(img/sin_foto.png) no-repeat')
 								$('#p_foto').css('background-position', 'center')
 								$('#p_foto').css('background-size','cover')
 							}else{
@@ -810,9 +810,9 @@ function initMap() {
 				$('#gr1, #gr2').delay(2000).fadeOut()
 			})
 
-            	$('#ir_mascota').click(function(){
+            	/*$('#ir_mascota').click(function(){
 					window.location.href = '#mascota'
-				})
+				})*/
 				
 				$('#ir_perfil').click(function(){
 					window.location.href = '#perfil'
