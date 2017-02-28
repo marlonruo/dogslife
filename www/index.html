@@ -88,30 +88,28 @@
 					}else{
 						mact=0
 						window.location.href = '#perfil'
+						var datos = data
+						var campo = datos.split("-*");
+						var id=campo[0];
+						$('#p_email').html(campo[1]);
+						$('#p_nombre').html(campo[2]);
+						if(campo[3]==""){$('#p_telefono').html('--');}else{$('#p_telefono').html(campo[3])};
+						if(campo[4]==""){$('#p_direccion').html('--');}else{$('#p_direccion').html(campo[4])};
+						var foto = campo[5];
 						
-						$("#perfil").load("http://dogs-life.com.mx/dogs/perfil.php", function() {
-							 ir_perfil()
-							 inicio()
-						});
+						document.getElementById('edi_email').value=campo[1]
+						document.getElementById('edi_nombre').value=campo[2]
+						document.getElementById('edi_telefono').value=campo[3]
+						document.getElementById('edi_direccion').value=campo[4]
 						
-						function ir_perfil(){ 
-							var datos = data
-							var campo = datos.split("-*");
-							var id=campo[0];
-							$('#p_email').html(campo[1]);
-							$('#p_nombre').html(campo[2]);
-							if(campo[3]==""){$('#p_telefono').html('--');}else{$('#p_telefono').html(campo[3])};
-							if(campo[4]==""){$('#p_direccion').html('--');}else{$('#p_direccion').html(campo[4])};
-							var foto = campo[5];
-							if(foto==""){
-								$('#p_foto').css('background', 'url(img/sin_foto.png) no-repeat')
-								$('#p_foto').css('background-position', 'center')
-								$('#p_foto').css('background-size','cover')
-							}else{
-								$('#p_foto').css('background', 'url(http://dogs-life.com.mx/dogs/fotos/'+foto+' no-repeat')
-								$('#p_foto').css('background-position', 'center')
-								$('#p_foto').css('background-size','cover')
-							}
+						if(foto==""){
+							$('#p_foto').css('background', 'url(img/perfil.jpg) no-repeat')
+							$('#p_foto').css('background-position', 'center')
+							$('#p_foto').css('background-size','cover')
+						}else{
+							$('#p_foto').css('background', 'url(http://dogs-life.com.mx/dogs/fotos/'+foto+' no-repeat')
+							$('#p_foto').css('background-position', 'center')
+							$('#p_foto').css('background-size','cover')
 						}
 					}
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
@@ -294,10 +292,89 @@
 
           
           
-            <div id="perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none"></div>
+          <div id="perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
+                <div id="p_foto" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/sin_foto.png) no-repeat; background-position:center; background-size:cover">
+                	<div id="ir_mascota" style="position:absolute; width:100%; height:30%; background-color:rgba(0,0,0,.5); bottom:0px; cursor:pointer">
+                    	<img src="img/mascota.png" class="centrar_v" style="right:5%; height:55%;"/>
+                        <div class="centrar_v" style="right:20%; text-align:right; font-size:13px; color:#FFFFFF">
+                        	<div style="font-size:15px" class="texto18"><b>Perfil de</b></div>
+                            <div class="texto15">mi mascota</div>
+                        </div>
+                        <div class="centrar_v" style="left:8%; text-align:left; font-size:13px; color:#FFFFFF"><b style="font-size:18px" class="texto18">0</b><br><span class="texto14">amigos</span></div>
+                    </div>
+                
+                </div>
+                
+                <div style="position:absolute; top:48%; background-color:rgba(240,240,240,1.00); width:100%; height:10%">
+                	<img src="img/nombre.png" class="centrar_v" style="left:8%; height:25%;"/>
+                    <img id="bt_edita_perfil" src="img/settings.png" class="centrar_v" style="right:8%; height:25%;"/>
+                    <div id="p_nombre" class="centrar_v texto16" style="left:20%; font-size:14px; color:#313131; font-weight:bold">Ximena Salazar Mora</div>
+                </div>
+                
+                 <div style="position:absolute; top:60%; background-color:rgba(240,240,240,1.00); width:100%; height:25%">
+                	<img src="img/telefono.png" class="centrar_v" style="left:8%; height:11%; margin-top:-10%"/>
+                    <div id="p_telefono" class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:-10%">(044) 55 4912 1015</div>
+                    
+                    <img src="img/mail.png" class="centrar_v" style="left:8%; height:11%;"/>
+                    <div  id="p_email" class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;">ximena_sm@gmail.com</div>
+                    
+                    <img src="img/direccion.png" class="centrar_v" style="left:8%; height:11%; margin-top:10%"/>
+                    <div  id="p_direccion" class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold; margin-top:10%">calle chabacano # 7 Col Higuera<br>Atizapan de Zaragoza</div>
+                </div>
+                
+                <div style="position:absolute; top:87%; background-color:rgba(240,240,240,1.00); width:100%; height:13%">
+                	<img src="img/calendar.png" class="centrar_v" style="left:8%; height:30%;"/>
+                    <img src="img/scroll.png" class="centrar_v" style="right:8%; height:50%;"/>
+                    <div class="centrar_v texto14" style="left:20%; font-size:12px; color:#313131; font-weight:bold;"><b>21 - ene - 2017</b><br>No tienes registro de paseos</div> 
+                </div>
+            </div>
             
-            <div id="editar_perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none"></div>
-             
+            
+            
+            
+            
+            <div id="edita_perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
+                <div id="p_foto" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/sin_foto_edi.png) no-repeat; background-position:center; background-size:cover">
+                	<input type="file" class="centrar_h" style="top:45%; width:50%">
+                	<div id="ir_mascota" style="position:absolute; width:100%; height:30%; background-color:rgba(0,0,0,.5); bottom:0px; cursor:pointer">
+                    	<img src="img/foto.png" class="centrar_v" style="right:5%; height:55%;"/>
+                        <div class="centrar_v" style="right:20%; text-align:right; font-size:13px; color:#FFFFFF">
+                        	<div style="font-size:15px" class="texto18"><b>Cambiar</b></div>
+                            <div class="texto15">mi foto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position:absolute; top:48%; background-color:rgba(240,240,240,1.00); width:100%; height:10%">
+                	<img src="img/nombre.png" class="centrar_v" style="left:8%; height:25%;"/>
+                    <img id="eer" src="img/settings.png" class="centrar_v" style="right:8%; height:25%;"/>
+                    <input id="edi_nombre" type="text" class="centrar_v texto16" style="left:20%; width:70%; padding-left:5%; height:60%; font-size:14px; color:#313131; font-weight:bold; border:none" value="nombre">
+                    
+                </div>
+
+                 <div style="position:absolute; top:60%; background-color:rgba(240,240,240,1.00); width:100%; height:25%">
+                	<img src="img/telefono.png" class="centrar_v" style="left:8%; height:11%; margin-top:-10%"/>
+                    <input id="edi_telefono" type="text" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:16%; border:none; font-size:12px; color:#313131; font-weight:bold; margin-top:-10%" value="telefono">
+                    <img src="img/mail.png" class="centrar_v" style="left:8%; height:11%;"/>
+                     <input id="edi_email" type="text" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:16%; border:none; font-size:12px; color:#313131; font-weight:bold;" value="email">
+                    <img src="img/direccion.png" class="centrar_v" style="left:8%; height:11%; margin-top:10%"/>
+                   
+                    <textarea id="edi_direccion" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:20%; border:none; font-size:12px; color:#313131; font-weight:bold; margin-top:10%">calle chabacano # 7 Col Higuera Atizapan de Zaragoza</textarea>
+                    
+                    
+                </div>
+
+                <div style="position:absolute; top:87%; background-color:rgba(240,240,240,1.00); width:100%; height:13%">
+                	<div id="edi_cancelar" style="position:absolute; width:50%; height:100%; cursor:pointer; background-color:#727272">
+                    	<div class="centrar texto18" style="color:rgba(255,255,255,1.00)">Cancelar</div>
+                    </div>
+                    <div id="edi_guardar" style="position:absolute; width:50%; left:50%; height:100%; background:rgba(0,0,0,1.00)">
+                    	<div class="centrar texto18" style="color:rgba(255,255,255,1.00)">Guardar</div>
+                    </div>
+                </div>
+            </div>
+            
+            
             
             
             
@@ -622,6 +699,9 @@ function initMap() {
 					}else if(pos==11){
 						$('#login, #paseo, #perfil, #alimentos').css('z-index', '1')
 						$('#mascota').css('z-index', '2')
+					}else if(pos==12){
+						$('#login, #paseo, #perfil, #alimentos').css('z-index', '1')
+						$('#edita_perfil').css('z-index', '2')
 					}
 					$('#perfil').show()
 					$('#login').css('z-index', '2')
@@ -630,8 +710,10 @@ function initMap() {
 					
 					$('#perfil').animate({marginLeft:'0%'}, 1000)
 					$('#titulo').html('Perfil')
-					if(mact==1 || mact==12){
+					if(mact==1 || pos==12){
 						$('#perfil').stop().animate({marginLeft:'0%'}, 0)
+						$('#edita_perfil').css('z-index', '11')
+						$('#edita_perfil').animate({marginLeft:'100%'}, 1000)
 					}
 					pos=3
 			}else if(pagina=='#paseos'){
@@ -713,13 +795,13 @@ function initMap() {
 					$('#titulo').html('Mi mascota')
 					pos=11
 			}else if(pagina=='#editar_perfil'){
-					$('#editar_perfil').show()
+					$('#edita_perfil').show()
 					$('#perfil').css('z-index', '3')
-					$('#editar_perfil').css('z-index', '10')
-					$('#editar_perfil').css('margin-left', '100%')
-							
-					$('#editar_perfil').animate({marginLeft:'0%'}, 1000)
-					$('#titulo').html('Editar Perfil')
+					$('#edita_perfil').css('z-index', '10')
+					$('#edita_perfil').css('margin-left', '100%')
+					
+					$('#edita_perfil').animate({marginLeft:'0%'}, 1000)
+					$('#titulo').html('Editar perfil')
 					pos=12
 			}	
 		} 
@@ -756,16 +838,19 @@ function initMap() {
 			})
 
 			$('#m1').click(function(){
+				mact=0
 					window.location.href = '#perfil'
 					$('#mmenu').animate({marginLeft:'100%'}, 1000)
 			})
 			
 			$('#m2').click(function(){
+				mact=0
 					window.location.href = '#paseos'
 					$('#mmenu').animate({marginLeft:'100%'}, 1000)
 			})
 			
 			$('#m3').click(function(){
+				mact=0
 					window.location.href = '#alimentos'
 					$('#mmenu').animate({marginLeft:'100%'}, 1000)
 			})
@@ -777,12 +862,24 @@ function initMap() {
 				$('#gr1, #gr2').delay(2000).fadeOut()
 			})
 
-            	/*$('#ir_mascota').click(function(){
+            	$('#ir_mascota').click(function(){
+					mact=0
 					window.location.href = '#mascota'
-				})*/
+				})
 				
 				$('#ir_perfil').click(function(){
+					mact=0
 					window.location.href = '#perfil'
+				})
+				
+				$('#bt_edita_perfil').click(function(){
+					mact=0
+					window.location.href = '#editar_perfil'
+				})
+				$('#edi_cancelar, #edi_guardar').click(function(){
+					mact=0
+					window.location.href = '#perfil'
+					
 				})
 				
 				$('.meen').click(function(){
