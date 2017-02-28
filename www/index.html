@@ -86,6 +86,8 @@
 					if(data=="no pasa"){
 						$('#aler2').html('* Usuario o contraseña incorrectos')
 					}else{
+						$('#aler2').html('')
+						$('.meen').show()
 						mact=0
 						window.location.href = '#perfil'
 						var datos = data
@@ -103,7 +105,7 @@
 						document.getElementById('edi_direccion').value=campo[4]
 						
 						if(foto==""){
-							$('#p_foto').css('background', 'url(img/perfil.jpg) no-repeat')
+							$('#p_foto').css('background', 'url(img/sin_foto.png) no-repeat')
 							$('#p_foto').css('background-position', 'center')
 							$('#p_foto').css('background-size','cover')
 						}else{
@@ -134,14 +136,14 @@
 		function borrar2a(){
 			if(document.getElementById('pass').value=='CONTRASEÑA'){
 				document.getElementById('pass').value=''
-				$('#pass').attr('type', 'password');
+				//$('#pass').attr('type', 'password');
 			}
 		}
 
 		function checar2a(){
 			if(document.getElementById('pass').value==''){
 				document.getElementById('pass').value='CONTRASEÑA'
-				$('#pass').attr('type', 'text');
+				//$('#pass').attr('type', 'text');
 			}
 			StatusBar.hide(); 
 		}
@@ -209,6 +211,7 @@
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data) {
+					$('.meen').show()
 					$('#aler1').html('')
 					mact=0
 					window.location.href = '#perfil'
@@ -818,6 +821,7 @@ function initMap() {
 		   
 		   function pasa_por(){
 					window.location.href = '#login'
+					$('.meen').hide()
 		   }
 		   
 		  
