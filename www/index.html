@@ -356,9 +356,9 @@
             
             
             <div id="edita_perfil" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
-                <div id="p_foto" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/sin_foto_edi.png) no-repeat; background-position:center; background-size:cover">
+                <div id="p_foto2" style="position:absolute; top:8%; width:100%; height:40%; background:url(img/sin_foto_edi.png) no-repeat; background-position:center; background-size:cover">
                 	<form method="post" id="formulario" enctype="multipart/form-data">
-                		<input name="file" type="file" class="centrar_h" style="top:45%; width:50%">
+                		<input name="file" type="file" class="centrar_h texto17" style="top:45%; width:50%;">
                 	</form>
                     
      <script>
@@ -374,7 +374,14 @@
                 processData: false,
                 success: function(datos)
                 {
-                    $("#p_foto").html(datos);
+					$('#retro').html(datos)
+					
+					setTimeout($('#retro').html(""), 2000)
+					
+					$('#p_foto2').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
+					$('#p_foto2').css('background-position','center')
+					$('#p_foto2').css('background-size','cover')
+					
 					$('#p_foto').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
 					$('#p_foto').css('background-position','center')
 					$('#p_foto').css('background-size','cover')
@@ -390,6 +397,7 @@
                         	<div style="font-size:15px" class="texto18"><b>Cambiar</b></div>
                             <div class="texto15">mi foto</div>
                         </div>
+                        <div id="retro" style="font-size:15px; position:absolute; left:8%; color:#FFFFFF; font-weight:bold" class="texto15 centrar_v"></div>
                     </div>
                 </div>
 
