@@ -364,6 +364,7 @@
      <script>
      $(function(){
         $("input[name='file']").on("change", function(){
+			$('#retro').html("Espera un momento")
             var formData = new FormData($("#formulario")[0]);
             var ruta = "http://dogs-life.com.mx/dogs/imagen.php";
             $.ajax({
@@ -375,16 +376,18 @@
                 success: function(datos)
                 {
 					$('#retro').html(datos)
-					
-					setTimeout($('#retro').html(""), 2000)
-					
-					$('#p_foto2').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
-					$('#p_foto2').css('background-position','center')
-					$('#p_foto2').css('background-size','cover')
-					
-					$('#p_foto').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
-					$('#p_foto').css('background-position','center')
-					$('#p_foto').css('background-size','cover')
+					var revisa = datos
+					setTimeout("$('#retro').html('')", 2000)
+
+					if(revisa.indexOf('Error,') != -1){
+						$('#p_foto2').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
+						$('#p_foto2').css('background-position','center')
+						$('#p_foto2').css('background-size','cover')
+						
+						$('#p_foto').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
+						$('#p_foto').css('background-position','center')
+						$('#p_foto').css('background-size','cover')
+					}
 					
                 }
             });
