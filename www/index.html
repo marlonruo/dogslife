@@ -97,6 +97,8 @@
 						if(campo[4]==""){$('#p_direccion').html('--');}else{$('#p_direccion').html(campo[4])};
 						var foto = campo[5];
 						
+						alert(foto)
+						
 						document.getElementById('edi_email').value=campo[1]
 						document.getElementById('edi_nombre').value=campo[2]
 						document.getElementById('edi_telefono').value=campo[3]
@@ -110,6 +112,10 @@
 							$('#p_foto').css('background', 'url(http://dogs-life.com.mx/dogs/fotos/'+foto+' no-repeat')
 							$('#p_foto').css('background-position', 'center')
 							$('#p_foto').css('background-size','cover')
+							
+							$('#p_foto2').css('background', 'url(http://dogs-life.com.mx/dogs/fotos/'+foto+' no-repeat')
+							$('#p_foto2').css('background-position', 'center')
+							$('#p_foto2').css('background-size','cover')
 						}
 					}
 					//localStorage.setItem("nombre", document.getElementById("f_nombre").value);
