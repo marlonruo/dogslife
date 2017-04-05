@@ -186,7 +186,7 @@
                 <div id="aler1" class="info" style="position:absolute; top:72.5%; width:100%; text-align:center; font-size:13px; cursor:pointer"></div>
                 
                 <script>
-                
+ var id               
 	$('#forma_registro').submit(function() {
 		var email = document.getElementById("email").value
 		
@@ -228,6 +228,7 @@
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data) {
+					id = data
 					$('.meen').show()
 					$('#aler1').html('')
 					mact=0
@@ -378,6 +379,8 @@
 					$('#retro').html(datos)
 					var revisa = datos
 					setTimeout("$('#retro').html('')", 2000)
+					
+					document.getElementById('edi_foto').value = datos
 
 					if(revisa.indexOf('Error,') != -1){
 						$('#p_foto2').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
@@ -404,21 +407,26 @@
                     </div>
                 </div>
 
+
+				<form name="forma_modifica" id="forma_modifica" method="post" action="http://dogs-life.com.mx/dogs/modificar.php?id=6">
                 <div style="position:absolute; top:48%; background-color:rgba(240,240,240,1.00); width:100%; height:10%">
                 	<img src="img/nombre.png" class="centrar_v" style="left:8%; height:25%;"/>
                     <img id="eer" src="img/settings.png" class="centrar_v" style="right:8%; height:25%;"/>
-                    <input id="edi_nombre" type="text" class="centrar_v texto16" style="left:20%; width:70%; padding-left:5%; height:60%; font-size:14px; color:#313131; font-weight:bold; border:none" value="nombre">
+                    
+                    <input id="edi_foto" name="edi_foto" type="text" class="centrar_v texto16" style="left:20%; width:70%; padding-left:5%; height:60%; font-size:14px; color:#313131; font-weight:bold; border:none; position:absolute; margin-top:20px; display:none" value="foto">
+                    
+                    <input id="edi_nombre" name="edi_nombre" type="text" class="centrar_v texto16" style="left:20%; width:70%; padding-left:5%; height:60%; font-size:14px; color:#313131; font-weight:bold; border:none" value="nombre">
                     
                 </div>
 
                  <div style="position:absolute; top:60%; background-color:rgba(240,240,240,1.00); width:100%; height:25%">
                 	<img src="img/telefono.png" class="centrar_v" style="left:8%; height:11%; margin-top:-10%"/>
-                    <input id="edi_telefono" type="text" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:16%; border:none; font-size:12px; color:#313131; font-weight:bold; margin-top:-10%" value="telefono">
+                    <input id="edi_telefono" name="edi_telefono" type="text" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:16%; border:none; font-size:12px; color:#313131; font-weight:bold; margin-top:-10%" value="telefono">
                     <img src="img/mail.png" class="centrar_v" style="left:8%; height:11%;"/>
-                     <input id="edi_email" type="text" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:16%; border:none; font-size:12px; color:#313131; font-weight:bold;" value="email">
+                     <input id="edi_email" name="edi_email" type="text" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:16%; border:none; font-size:12px; color:#313131; font-weight:bold;" value="email">
                     <img src="img/direccion.png" class="centrar_v" style="left:8%; height:11%; margin-top:10%"/>
                    
-                    <textarea id="edi_direccion" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:20%; border:none; font-size:12px; color:#313131; font-weight:bold; margin-top:10%">calle chabacano # 7 Col Higuera Atizapan de Zaragoza</textarea>
+                    <textarea id="edi_direccion" name="edi_direccion" class="centrar_v texto14" style="left:20%; width:70%; padding-left:5%; height:20%; border:none; font-size:12px; color:#313131; font-weight:bold; margin-top:10%"></textarea>
                     
                     
                 </div>
@@ -427,14 +435,36 @@
                 	<div id="edi_cancelar" style="position:absolute; width:50%; height:100%; cursor:pointer; background-color:#727272">
                     	<div class="centrar texto18" style="color:rgba(255,255,255,1.00)">Cancelar</div>
                     </div>
-                    <div id="edi_guardar" style="position:absolute; width:50%; left:50%; height:100%; background:rgba(0,0,0,1.00)">
-                    	<div class="centrar texto18" style="color:rgba(255,255,255,1.00)">Guardar</div>
-                    </div>
+                    
+                    <input id="edi_guardar" type="submit" class="texto18" style="position:absolute; width:50%; left:50%; height:100%; background:rgba(0,0,0,1.00); border:none; color:rgba(255,255,255,1.00)" value="Guardar">
                 </div>
             </div>
             
+            </form>
             
             
+            <script>
+            
+        $('#forma_modifica').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+					$('#p_email').html(document.getElementById('edi_email').value);
+					$('#p_nombre').html(document.getElementById('edi_nombre').value);
+					$('#p_telefono').html(document.getElementById('edi_telefono').value);
+					$('#p_direccion').html(document.getElementById('edi_direccion').value);
+					
+					mact=0
+					window.location.href = '#perfil'
+					
+            }
+        })
+        return false;
+    }); 
+	
+            </script>
             
             
             <div id="mascota" class="paginas" style="background:#fff; color:#9E9E9E; display:none">
