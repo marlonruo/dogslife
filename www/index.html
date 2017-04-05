@@ -378,11 +378,10 @@
                 {
 					$('#retro').html(datos)
 					var revisa = datos
-					setTimeout("$('#retro').html('')", 2000)
+					setTimeout("$('#retro').html('')", 3000)
 					
 					document.getElementById('edi_foto').value = datos
-					alert(revisa.indexOf('Error,'))
-					if(revisa.indexOf('Error,') != -1){
+					if(revisa.indexOf('Error,') == -1){
 						$('#p_foto2').css('background','url(http://dogs-life.com.mx/dogs/fotos/'+datos+') no-repeat')
 						$('#p_foto2').css('background-position','center')
 						$('#p_foto2').css('background-size','cover')
@@ -403,7 +402,7 @@
                         	<div style="font-size:15px" class="texto18"><b>Cambiar</b></div>
                             <div class="texto15">mi foto</div>
                         </div>
-                        <div id="retro" style="font-size:15px; position:absolute; left:8%; color:#FFFFFF; font-weight:bold" class="texto15 centrar_v"></div>
+                        <div id="retro" style="font-size:13px; position:absolute; left:8%; color:#FFFFFF;" class="texto15 centrar_v"></div>
                     </div>
                 </div>
 
